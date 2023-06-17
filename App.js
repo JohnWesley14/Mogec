@@ -1,22 +1,28 @@
 import { View, Text, StyleSheet, SafeAreaView, StatusBar } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { firebase } from '@react-native-firebase/database'
 import database from '@react-native-firebase/database';
 import {  useFonts, Montserrat_600SemiBold, Montserrat_800ExtraBold} from '@expo-google-fonts/montserrat';
 
 export default function InitialHome() {
-  const [value, setValue] = useState()
+  const [value, setValue] = useState(0)
   const [isSensorModeAlert, setIsSensorModeAlert] = useState(false);
 
-  function lerDisp() {
-    database()
-      .ref("/Sensor_de_Gas/Valor_de_Leitura")
-      .on("value", (snapshot) => {
-        setValue(snapshot.val());
-        setIsSensorModeAlert(value >= 50);
-      });
-  }
-  lerDisp(); 
+
+  useEffect(() => {
+    const lerDisp = (snapshot) => {
+      setValue(snapshot.val());
+      setIsSensorModeAlert(snapshot.val() >= 50);
+    };
+
+    const sensorRef = database().ref("/Sensor_de_Gas/Valor_de_Leitura");
+    sensorRef.on("value", lerDisp);
+
+    return () => {
+      // Remover o listener quando o componente for desmontado
+      sensorRef.off("value", lerDisp);
+    };
+  }, []);
   //console.log(value);
   
   
@@ -107,7 +113,7 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
     borderRadius: 200,
-    borderColor: "green",
+    //borderColor: "green",
     borderWidth: 12,
     marginTop: 50,
     alignItems: "center",
@@ -124,7 +130,7 @@ const styles = StyleSheet.create({
   },
   warnMessage: {
     borderWidth: 2,
-    borderColor: "green",
+    //rborderColor: "green",
     paddingHorizontal: 30,
     paddingVertical: 15,
     borderRadius: 40,
