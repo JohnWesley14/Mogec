@@ -1,7 +1,8 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, SafeAreaView, StatusBar } from "react-native";
 import React, { useState } from "react";
 import { firebase } from '@react-native-firebase/database'
 import database from '@react-native-firebase/database';
+import {  useFonts, Montserrat_600SemiBold, Montserrat_800ExtraBold} from '@expo-google-fonts/montserrat';
 
 export default function InitialHome() {
   const [value, setValue] = useState()
@@ -16,7 +17,7 @@ export default function InitialHome() {
       });
   }
   lerDisp(); 
-  console.log(value);
+  //console.log(value);
   
   
 
@@ -47,9 +48,22 @@ export default function InitialHome() {
     styles.warnMessage.borderColor = colors.green;
   }
   //Se o sensor detectar perigo, mudar cor para vermelho, senão, alterar para verde.
-
+  let [fontsLoaded] = useFonts({
+    Montserrat_600SemiBold,
+    Montserrat_800ExtraBold,
+  });
+  if(!fontsLoaded){
+    return null;
+  }else{
+  
   return (
-    <View style={styles.container}>
+  <SafeAreaView style = {styles.container}>
+    <View style ={styles.cabecalho}>
+      <Text style ={styles.texto_cabecalho}>
+        mogec
+      </Text>
+    </View>
+     <View style={styles.container}>
       <Text style={styles.header}>Leitura do Sensor</Text>
       <View style={circleStyle}>
         <Text style={styles.valueSensor}>{value}%</Text>
@@ -61,9 +75,25 @@ export default function InitialHome() {
         </Text>
       </View>
     </View>
+  </SafeAreaView>
+   
   );
 }
+}
 const styles = StyleSheet.create({
+  cabecalho:{
+    width:'100%',
+    height:53,
+    backgroundColor:'#262323',
+    alignItems: 'center',
+    justifyContent:'center',
+    borderBottomLeftRadius:25,
+    borderBottomRightRadius:25,
+  },
+  texto_cabecalho:{
+    color:'#fff',
+    fontFamily: 'Montserrat_800ExtraBold'
+  },
   container: {
     flex: 1,
     alignItems: "center",
@@ -101,6 +131,7 @@ const styles = StyleSheet.create({
     marginTop: 50,
   },
   textWarnMessage: {
+    fontFamily: 'Montserrat_600SemiBold',
     fontSize: 16,
     fontWeight: "700",
     width: 230,
