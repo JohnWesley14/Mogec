@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "MogecV2",
+    "slug": "MogecV2",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
