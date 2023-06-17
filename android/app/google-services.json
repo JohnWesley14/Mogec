@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "328408596879",
+    "firebase_url": "https://mogec-f96d1-default-rtdb.firebaseio.com",
+    "project_id": "mogec-f96d1",
+    "storage_bucket": "mogec-f96d1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:328408596879:android:4261d1c2ff918c79584bfa",
+        "android_client_info": {
+          "package_name": "com.devkito.mogec"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "328408596879-sbj00pnif7pvnt3k4t3ilgggchbt7co2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7xTB1kIfJZm4EQt2jxpC2ZScgyQtDjlU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "328408596879-sbj00pnif7pvnt3k4t3ilgggchbt7co2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:328408596879:android:020a7749badc1874584bfa",
+        "android_client_info": {
+          "package_name": "com.mogecv2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "328408596879-sbj00pnif7pvnt3k4t3ilgggchbt7co2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7xTB1kIfJZm4EQt2jxpC2ZScgyQtDjlU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "328408596879-sbj00pnif7pvnt3k4t3ilgggchbt7co2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
