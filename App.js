@@ -8,39 +8,27 @@ export default function InitialHome() {
   const [isSensorModeAlert, setIsSensorModeAlert] = useState(false);
   
   useEffect(() => {
-    const lerDisp = () => {
-      database()
-        .ref("/Sensor_de_Gas/Valor_de_Leitura")
-        .on("value", (snapshot) => {
-          setValue(snapshot.val());
-          setIsSensorModeAlert(snapshot.val() >= 50);
-        });
+    const lerDisp = (snapshot) => {
+      setValue(snapshot.val());
+      setIsSensorModeAlert(snapshot.val() >= 50);
     };
 
-
-    // Chama a função para ler o valor inicialmente
+    const sensorRef = database().ref("/Sensor_de_Gas/Valor_de_Leitura");
+    sensorRef.on("value", lerDisp);
 
     return () => {
-      // Limpa o event listener quando o componente for desmontado
-      database()
-        .ref("/Sensor_de_Gas/Valor_de_Leitura")
-        .off("value", lerDisp);
+      // Remover o listener quando o componente for desmontado
+      sensorRef.off("value", lerDisp);
     };
-  }, [value]);
+  }, []);
+  
   
   
   
   console.log(`O valor é ${value}`);
 
-  function lerDisp() {
-    database()
-      .ref("/Sensor_de_Gas/Valor_de_Leitura")
-      .on("value", (snapshot) => {
-        setValue(snapshot.val());
-        setIsSensorModeAlert(value >= 50);
-      });
-  }
-  lerDisp(); 
+  
+ 
   //console.log(value);
 
   
