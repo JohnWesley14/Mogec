@@ -12,7 +12,7 @@ export default function InitialHome() {
       .ref("/Sensor_de_Gas/Valor_de_Leitura")
       .on("value", (snapshot) => {
         setValue(snapshot.val());
-        setIsSensorModeAlert(sensorValue <= 50);
+        setIsSensorModeAlert(value <= 50);
       });
   }
   lerDisp(); 
