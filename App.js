@@ -1,11 +1,7 @@
-import { View, Text, StyleSheet, } from "react-native";
+import { View, Text, StyleSheet,SafeAreaView } from "react-native";
 import React, { useState, useEffect} from "react";
 import { firebase } from '@react-native-firebase/database'
 import database from '@react-native-firebase/database';
-import {  useFonts, Montserrat_600SemiBold, Montserrat_800ExtraBold} from '@expo-google-fonts/montserrat';
-
-
-
 
 export default function InitialHome() {
   const [value, setValue] = useState()
@@ -21,6 +17,7 @@ export default function InitialHome() {
         });
     };
 
+
     // Chama a função para ler o valor inicialmente
 
     return () => {
@@ -34,6 +31,18 @@ export default function InitialHome() {
   
   
   console.log(`O valor é ${value}`);
+
+  function lerDisp() {
+    database()
+      .ref("/Sensor_de_Gas/Valor_de_Leitura")
+      .on("value", (snapshot) => {
+        setValue(snapshot.val());
+        setIsSensorModeAlert(value >= 50);
+      });
+  }
+  lerDisp(); 
+  //console.log(value);
+
   
   
 
@@ -64,13 +73,7 @@ export default function InitialHome() {
     styles.warnMessage.borderColor = colors.green;
   }
   //Se o sensor detectar perigo, mudar cor para vermelho, senão, alterar para verde.
-  let [fontsLoaded] = useFonts({
-    Montserrat_600SemiBold,
-    Montserrat_800ExtraBold,
-  });
-  if(!fontsLoaded){
-    return null;
-  }else{
+  
   
   return (
   <SafeAreaView style = {styles.container}>
@@ -95,7 +98,7 @@ export default function InitialHome() {
    
   );
 }
-}
+
 const styles = StyleSheet.create({
   cabecalho:{
     width:'100%',
@@ -105,11 +108,11 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     borderBottomLeftRadius:25,
     borderBottomRightRadius:25,
-    fontFamily: Montserrat_600SemiBold,
+
   },
   texto_cabecalho:{
     color:'#fff',
-    fontFamily: 'Montserrat_800ExtraBold'
+    
   },
   container: {
     flex: 1,
@@ -148,7 +151,6 @@ const styles = StyleSheet.create({
     marginTop: 50,
   },
   textWarnMessage: {
-    fontFamily: 'Montserrat_600SemiBold',
     fontSize: 16,
     fontWeight: "700",
     width: 230,
