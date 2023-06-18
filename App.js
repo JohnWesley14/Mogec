@@ -59,8 +59,6 @@ export default function InitialHome() {
   if(!fontsLoaded){
     return null;
   }else{
-  
-  
   return (
   <SafeAreaView style = {styles.container}>
     <View style ={styles.cabecalho}>
@@ -83,6 +81,7 @@ export default function InitialHome() {
   </SafeAreaView>
    
   );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -142,5 +141,5 @@ const styles = StyleSheet.create({
     width: 230,
     textAlign: "center",
   },
-});
 }
+)
