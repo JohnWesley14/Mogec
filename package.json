@@ -9,6 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@expo-google-fonts/montserrat": "^0.2.3",
     "@react-native-firebase/app": "^18.0.0",
     "@react-native-firebase/database": "^18.0.0",
     "expo": "~48.0.18",
