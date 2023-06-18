@@ -1,10 +1,8 @@
 
-import { View, Text, StyleSheet,SafeAreaView } from "react-native";
+import { View, Text, StyleSheet,SafeAreaView, Image } from "react-native";
 import React, { useState, useEffect} from "react";
-import { firebase } from '@react-native-firebase/database'
 import database from '@react-native-firebase/database';
 import {  useFonts, Montserrat_600SemiBold, Montserrat_800ExtraBold} from '@expo-google-fonts/montserrat';
-
 export default function InitialHome() {
   const [value, setValue] = useState(0)
   const [isSensorModeAlert, setIsSensorModeAlert] = useState(false);
