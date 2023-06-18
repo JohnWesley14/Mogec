@@ -1,15 +1,16 @@
 {
   "expo": {
-    "name": "MogecV2",
-    "slug": "MogecV2",
+    "name": "Mogec",
+    "slug": "Mogec",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
     ],
     "extra": {
       "eas": {
-        "projectId": "cbc2a1c9-e210-419a-925a-627998f9c3a4"
+        "projectId": "ff7712a8-2d84-4ae8-a521-63cc22f80de3"
       }
-    }
+    },
+    "owner": "nmmarcoz"
   }
 }
