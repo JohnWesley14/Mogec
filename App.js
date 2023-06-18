@@ -1,5 +1,6 @@
-import { View, Text, StyleSheet, SafeAreaView, StatusBar } from "react-native";
-import React, { useState, useEffect } from "react";
+
+import { View, Text, StyleSheet,SafeAreaView } from "react-native";
+import React, { useState, useEffect} from "react";
 import { firebase } from '@react-native-firebase/database'
 import database from '@react-native-firebase/database';
 import {  useFonts, Montserrat_600SemiBold, Montserrat_800ExtraBold} from '@expo-google-fonts/montserrat';
@@ -7,7 +8,7 @@ import {  useFonts, Montserrat_600SemiBold, Montserrat_800ExtraBold} from '@expo
 export default function InitialHome() {
   const [value, setValue] = useState(0)
   const [isSensorModeAlert, setIsSensorModeAlert] = useState(false);
-
+  
 
   useEffect(() => {
     const lerDisp = (snapshot) => {
@@ -23,9 +24,6 @@ export default function InitialHome() {
       sensorRef.off("value", lerDisp);
     };
   }, []);
-  //console.log(value);
-  
-  
 
   var mensagens = ["Os níveis estão normais", "Alerta de vazamento"];
   //Mensagens para utilizar no texto de aviso.
@@ -62,6 +60,7 @@ export default function InitialHome() {
     return null;
   }else{
   
+  
   return (
   <SafeAreaView style = {styles.container}>
     <View style ={styles.cabecalho}>
@@ -85,7 +84,7 @@ export default function InitialHome() {
    
   );
 }
-}
+
 const styles = StyleSheet.create({
   cabecalho:{
     width:'100%',
@@ -95,10 +94,11 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     borderBottomLeftRadius:25,
     borderBottomRightRadius:25,
+
   },
   texto_cabecalho:{
     color:'#fff',
-    fontFamily: 'Montserrat_800ExtraBold'
+    
   },
   container: {
     flex: 1,
@@ -137,10 +137,10 @@ const styles = StyleSheet.create({
     marginTop: 50,
   },
   textWarnMessage: {
-    fontFamily: 'Montserrat_600SemiBold',
     fontSize: 16,
     fontWeight: "700",
     width: 230,
     textAlign: "center",
   },
 });
+}
